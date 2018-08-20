@@ -359,7 +359,7 @@ describe('Token', function () {
     });
   });
 
-  it('cannot add a route that has payload validation required', function (done) {
+  it('cannot add a route that has payload validation required', function () {
 
     var fn = function () {
 
@@ -367,7 +367,6 @@ describe('Token', function () {
     };
 
     expect(fn).to.throw(Error);
-    done();
   });
 
 });
