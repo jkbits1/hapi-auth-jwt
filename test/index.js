@@ -62,7 +62,7 @@ describe('Token', function () {
 
   server.connection();
 
-  before(function (done) {
+  before(function () {
 
     server.register(require('../'), function (err) {
 
@@ -77,8 +77,6 @@ describe('Token', function () {
         { method: 'POST', path: '/tokenArrayScopeA', handler: tokenHandler, config: { auth: { scope: ['x', 'y', 'a'] } } },
         { method: 'POST', path: '/double', handler: doubleHandler }
       ]);
-
-      done();
     });
   });
 
