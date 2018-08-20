@@ -48,6 +48,8 @@ describe('Token', function () {
     reply('ok');
   };
 
+  var server = new Hapi.Server({ debug: false });
+
   var doubleHandler = function (request, reply) {
 
     var options = { method: 'POST', url: '/token', headers: { authorization: tokenHeader('john') }, credentials: request.auth.credentials };
@@ -58,10 +60,9 @@ describe('Token', function () {
     });
   };
 
-  var server = new Hapi.Server({ debug: false });
   server.connection();
 
-  before(function (done) {
+  before(function () {
 
     server.register(require('../'), function (err) {
 
@@ -76,8 +77,6 @@ describe('Token', function () {
         { method: 'POST', path: '/tokenArrayScopeA', handler: tokenHandler, config: { auth: { scope: ['x', 'y', 'a'] } } },
         { method: 'POST', path: '/double', handler: doubleHandler }
       ]);
-
-      done();
     });
   });
 
@@ -360,7 +359,7 @@ describe('Token', function () {
     });
   });
 
-  it('cannot add a route that has payload validation required', function (done) {
+  it('cannot add a route that has payload validation required', function () {
 
     var fn = function () {
 
@@ -368,7 +367,6 @@ describe('Token', function () {
     };
 
     expect(fn).to.throw(Error);
-    done();
   });
 
 });
