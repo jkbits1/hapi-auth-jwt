@@ -48,6 +48,8 @@ describe('Token', function () {
     reply('ok');
   };
 
+  const server = new Hapi.Server({ debug: false });
+
   var doubleHandler = function (request, reply) {
 
     var options = { method: 'POST', url: '/token', headers: { authorization: tokenHeader('john') }, credentials: request.auth.credentials };
@@ -58,7 +60,6 @@ describe('Token', function () {
     });
   };
 
-  var server = new Hapi.Server({ debug: false });
   server.connection();
 
   before(function (done) {
