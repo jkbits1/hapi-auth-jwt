@@ -23,6 +23,7 @@
     "hapi": "~16"
   },
   "devDependencies": {
+    "hapi": "~16",
     "code": "~5",
     "lab": "~15",
     "jshint": "2.x.x",
