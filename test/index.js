@@ -48,7 +48,7 @@ describe('Token', function () {
     reply('ok');
   };
 
-  let server = new Hapi.Server({ debug: false });
+  var server = new Hapi.Server({ debug: false });
 
   var doubleHandler = function (request, reply) {
 
